@@ -1,0 +1,779 @@
+<!doctype html>
+<html lang="id" class="h-full">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Naylah Syifa Nadhifah - Portfolio</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="/_sdk/element_sdk.js"></script>
+  <script src="/_sdk/data_sdk.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&amp;family=Poppins:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
+  <style>
+    body {
+      box-sizing: border-box;
+    }
+    
+    * {
+      scroll-behavior: smooth;
+    }
+    
+    .font-display {
+      font-family: 'Playfair Display', serif;
+    }
+    
+    .font-body {
+      font-family: 'Poppins', sans-serif;
+    }
+    
+    .gradient-bg {
+      background: linear-gradient(135deg, #0c1445 0%, #1a237e 50%, #0d47a1 100%);
+    }
+    
+    .glass-card {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    
+    .hover-lift {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .hover-lift:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    }
+    
+    .skill-bar {
+      background: linear-gradient(90deg, #64b5f6, #1976d2);
+      transition: width 1s ease-out;
+    }
+    
+    .nav-link {
+      position: relative;
+    }
+    
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: #64b5f6;
+      transition: width 0.3s ease;
+    }
+    
+    .nav-link:hover::after {
+      width: 100%;
+    }
+    
+    .floating {
+      animation: floating 3s ease-in-out infinite;
+    }
+    
+    @keyframes floating {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+    
+    .fade-in {
+      animation: fadeIn 0.8s ease-out forwards;
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+    
+    .modal-overlay {
+      background: rgba(0, 0, 0, 0.8);
+      backdrop-filter: blur(5px);
+    }
+    
+    .profile-upload-area {
+      border: 3px dashed rgba(100, 181, 246, 0.5);
+      transition: all 0.3s ease;
+    }
+    
+    .profile-upload-area:hover {
+      border-color: #64b5f6;
+      background: rgba(100, 181, 246, 0.1);
+    }
+  </style>
+  <style>@view-transition { navigation: auto; }</style>
+ </head>
+ <body class="h-full font-body gradient-bg text-white overflow-x-hidden">
+  <div id="app-container" class="min-h-full w-full"><!-- Header Navigation -->
+   <header class="fixed top-0 left-0 right-0 z-50 glass-card">
+    <div class="max-w-6xl mx-auto px-6 py-4">
+     <nav class="flex items-center justify-between"><a href="#home" class="font-display text-2xl font-bold text-white hover:text-blue-300 transition-colors"> ✨ Naylah </a>
+      <div class="hidden md:flex items-center space-x-8"><a href="#home" class="nav-link text-white hover:text-blue-300 transition-colors">Home</a> <a href="#about" class="nav-link text-white hover:text-blue-300 transition-colors">About</a> <a href="#skills" class="nav-link text-white hover:text-blue-300 transition-colors">Skills</a> <a href="#portfolio" class="nav-link text-white hover:text-blue-300 transition-colors">Portfolio</a> <a href="#contact" class="nav-link text-white hover:text-blue-300 transition-colors">Contact</a>
+      </div><button id="mobile-menu-btn" class="md:hidden text-white p-2">
+       <svg class="w-6 h-6" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+       </svg></button>
+     </nav><!-- Mobile Menu -->
+     <div id="mobile-menu" class="hidden md:hidden mt-4 pb-4 border-t border-white/20 pt-4">
+      <div class="flex flex-col space-y-4"><a href="#home" class="text-white hover:text-blue-300 transition-colors">Home</a> <a href="#about" class="text-white hover:text-blue-300 transition-colors">About</a> <a href="#skills" class="text-white hover:text-blue-300 transition-colors">Skills</a> <a href="#portfolio" class="text-white hover:text-blue-300 transition-colors">Portfolio</a> <a href="#contact" class="text-white hover:text-blue-300 transition-colors">Contact</a>
+      </div>
+     </div>
+    </div>
+   </header><!-- Hero Section -->
+   <section id="home" class="min-h-screen flex items-center justify-center px-6 pt-20">
+    <div class="max-w-6xl mx-auto text-center fade-in">
+     <div class="mb-8"><!-- Profile Photo Upload Area -->
+      <div id="profile-photo-container" class="relative inline-block">
+       <div id="profile-photo-area" class="w-48 h-48 md:w-56 md:h-56 rounded-full overflow-hidden border-4 border-blue-300 shadow-2xl mx-auto cursor-pointer profile-upload-area flex items-center justify-center bg-blue-900/30">
+        <div id="profile-placeholder" class="text-center p-4">
+         <svg class="w-16 h-16 mx-auto text-blue-300 mb-2" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+         </svg>
+         <p class="text-blue-200 text-sm">Klik untuk upload foto</p>
+        </div><img id="profile-image" class="hidden w-full h-full object-cover" alt="Foto Profil Naylah">
+       </div><input type="file" id="profile-input" accept="image/*" class="hidden"> <button id="remove-profile-btn" class="hidden absolute -top-2 -right-2 w-8 h-8 bg-red-500 hover:bg-red-600 rounded-full text-white text-sm font-bold shadow-lg transition-colors">×</button>
+      </div>
+     </div>
+     <h1 id="hero-name" class="font-display text-4xl md:text-6xl font-bold mb-4 floating">Naylah Syifa Nadhifah</h1>
+     <p id="hero-role" class="text-xl md:text-2xl text-blue-200 mb-6">✏️ Menggambar Ilustrasi</p>
+     <p id="hero-greeting" class="text-lg md:text-xl text-blue-100 max-w-2xl mx-auto mb-8 leading-relaxed">Hallo nama saya Naylah bisa di panggil Nay, selamat datang di web saya, salam kenal 👋✨</p>
+     <div class="flex flex-col sm:flex-row gap-4 justify-center"><a href="#portfolio" class="px-8 py-3 bg-blue-500 hover:bg-blue-600 rounded-full text-white font-medium transition-all hover:shadow-lg hover:shadow-blue-500/50"> 🎨 Lihat Portfolio </a> <a href="#contact" class="px-8 py-3 glass-card rounded-full text-white font-medium hover:bg-white/20 transition-all"> 📬 Hubungi Saya </a>
+     </div>
+    </div>
+   </section><!-- About Section -->
+   <section id="about" class="py-20 px-6">
+    <div class="max-w-6xl mx-auto">
+     <h2 class="font-display text-3xl md:text-4xl font-bold text-center mb-12">✨ Tentang Saya</h2>
+     <div class="grid md:grid-cols-2 gap-12 items-center">
+      <div class="glass-card rounded-3xl p-8 hover-lift">
+       <div class="text-6xl mb-6">
+        👩‍🎨
+       </div>
+       <h3 class="font-display text-2xl font-semibold mb-4 text-blue-200">Latar Belakang</h3>
+       <p id="about-background" class="text-blue-100 leading-relaxed mb-4">Saya anak pertama dari 2 bersaudara, lahir di GARUT 20 Juli 2008. Memiliki passion yang besar dalam dunia seni dan ilustrasi sejak kecil.</p>
+       <div class="flex items-center gap-2 text-blue-300">
+        <svg class="w-5 h-5" fill="currentColor" viewbox="0 0 20 20"><path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd" />
+        </svg><span>Garut, Jawa Barat</span>
+       </div>
+      </div>
+      <div class="glass-card rounded-3xl p-8 hover-lift">
+       <div class="text-6xl mb-6">
+        🎯
+       </div>
+       <h3 class="font-display text-2xl font-semibold mb-4 text-blue-200">Tujuan &amp; Minat</h3>
+       <p id="about-goal" class="text-blue-100 leading-relaxed mb-4">Tujuan saya ingin hidup lebih baik dan terus berkembang dalam bidang desain dan ilustrasi.</p>
+       <div class="flex flex-wrap gap-2 mt-4"><span class="px-3 py-1 bg-blue-500/30 rounded-full text-sm">🎨 Ilustrasi</span> <span class="px-3 py-1 bg-purple-500/30 rounded-full text-sm">✏️ Desain</span> <span class="px-3 py-1 bg-pink-500/30 rounded-full text-sm">💡 Kreativitas</span>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section><!-- Skills Section -->
+   <section id="skills" class="py-20 px-6">
+    <div class="max-w-6xl mx-auto">
+     <h2 class="font-display text-3xl md:text-4xl font-bold text-center mb-12">💪 Keahlian</h2>
+     <div class="grid md:grid-cols-2 gap-8"><!-- Hard Skills -->
+      <div class="glass-card rounded-3xl p-8">
+       <h3 class="font-display text-xl font-semibold mb-6 text-blue-200">🔧 Hard Skills</h3>
+       <div class="space-y-6">
+        <div>
+         <div class="flex justify-between mb-2"><span>Desain Grafis</span> <span class="text-blue-300">90%</span>
+         </div>
+         <div class="h-3 bg-white/20 rounded-full overflow-hidden">
+          <div class="skill-bar h-full rounded-full" style="width: 90%"></div>
+         </div>
+        </div>
+        <div>
+         <div class="flex justify-between mb-2"><span>Ilustrasi Digital</span> <span class="text-blue-300">85%</span>
+         </div>
+         <div class="h-3 bg-white/20 rounded-full overflow-hidden">
+          <div class="skill-bar h-full rounded-full" style="width: 85%"></div>
+         </div>
+        </div>
+        <div>
+         <div class="flex justify-between mb-2"><span>Menggambar Manual</span> <span class="text-blue-300">95%</span>
+         </div>
+         <div class="h-3 bg-white/20 rounded-full overflow-hidden">
+          <div class="skill-bar h-full rounded-full" style="width: 95%"></div>
+         </div>
+        </div>
+       </div>
+      </div><!-- Soft Skills -->
+      <div class="glass-card rounded-3xl p-8">
+       <h3 class="font-display text-xl font-semibold mb-6 text-blue-200">🌟 Soft Skills</h3>
+       <div class="grid grid-cols-2 gap-4">
+        <div class="bg-white/10 rounded-2xl p-4 text-center hover-lift cursor-default">
+         <div class="text-3xl mb-2">
+          💬
+         </div><span class="text-sm">Komunikasi</span>
+        </div>
+        <div class="bg-white/10 rounded-2xl p-4 text-center hover-lift cursor-default">
+         <div class="text-3xl mb-2">
+          🤝
+         </div><span class="text-sm">Kerja Tim</span>
+        </div>
+        <div class="bg-white/10 rounded-2xl p-4 text-center hover-lift cursor-default">
+         <div class="text-3xl mb-2">
+          💡
+         </div><span class="text-sm">Kreativitas</span>
+        </div>
+        <div class="bg-white/10 rounded-2xl p-4 text-center hover-lift cursor-default">
+         <div class="text-3xl mb-2">
+          ⏰
+         </div><span class="text-sm">Manajemen Waktu</span>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section><!-- Portfolio Section -->
+   <section id="portfolio" class="py-20 px-6">
+    <div class="max-w-6xl mx-auto">
+     <h2 class="font-display text-3xl md:text-4xl font-bold text-center mb-4">🎨 Portfolio</h2>
+     <p class="text-blue-200 text-center mb-8">Kumpulan karya dan proyek saya</p><!-- Add Portfolio Button -->
+     <div class="text-center mb-8"><button id="add-portfolio-btn" class="px-6 py-3 bg-blue-500 hover:bg-blue-600 rounded-full text-white font-medium transition-all hover:shadow-lg hover:shadow-blue-500/50 inline-flex items-center gap-2">
+       <svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+       </svg> Tambah Karya Baru </button>
+     </div><!-- Portfolio Grid -->
+     <div id="portfolio-grid" class="portfolio-grid"><!-- Portfolio items will be rendered here -->
+     </div><!-- Empty State -->
+     <div id="empty-portfolio" class="hidden text-center py-16">
+      <div class="text-6xl mb-4">
+       🎨
+      </div>
+      <p class="text-blue-200 text-lg mb-4">Belum ada karya yang ditambahkan</p>
+      <p class="text-blue-300 text-sm">Klik tombol "Tambah Karya Baru" untuk memulai</p>
+     </div>
+    </div>
+   </section><!-- Contact Section -->
+   <section id="contact" class="py-20 px-6">
+    <div class="max-w-4xl mx-auto">
+     <h2 class="font-display text-3xl md:text-4xl font-bold text-center mb-12">📬 Hubungi Saya</h2>
+     <div class="grid md:grid-cols-3 gap-6"><a href="mailto:nsyifanadhifah@gmail.com" class="glass-card rounded-2xl p-6 text-center hover-lift block">
+       <div class="text-4xl mb-4">
+        📧
+       </div><h3 class="font-semibold mb-2">Email</h3><p class="text-blue-200 text-sm break-all">nsyifanadhifah@gmail.com</p></a> <a href="https://wa.me/6289503026221" target="_blank" rel="noopener noreferrer" class="glass-card rounded-2xl p-6 text-center hover-lift block">
+       <div class="text-4xl mb-4">
+        📱
+       </div><h3 class="font-semibold mb-2">WhatsApp</h3><p class="text-blue-200 text-sm">0895-0302-6221</p></a> <a href="https://instagram.com/naylandfh_" target="_blank" rel="noopener noreferrer" class="glass-card rounded-2xl p-6 text-center hover-lift block">
+       <div class="text-4xl mb-4">
+        📸
+       </div><h3 class="font-semibold mb-2">Instagram</h3><p class="text-blue-200 text-sm">@naylandfh_</p></a>
+     </div><!-- Contact Form -->
+     <div class="glass-card rounded-3xl p-8 mt-12">
+      <h3 class="font-display text-xl font-semibold mb-6 text-center">💌 Kirim Pesan</h3>
+      <form id="contact-form" class="space-y-4">
+       <div class="grid md:grid-cols-2 gap-4">
+        <div><label for="contact-name" class="block text-sm text-blue-200 mb-2">Nama</label> <input type="text" id="contact-name" placeholder="Nama Anda" class="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl focus:outline-none focus:border-blue-400 text-white placeholder-blue-300/50">
+        </div>
+        <div><label for="contact-email" class="block text-sm text-blue-200 mb-2">Email</label> <input type="email" id="contact-email" placeholder="email@contoh.com" class="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl focus:outline-none focus:border-blue-400 text-white placeholder-blue-300/50">
+        </div>
+       </div>
+       <div><label for="contact-message" class="block text-sm text-blue-200 mb-2">Pesan</label> <textarea id="contact-message" rows="4" placeholder="Tulis pesan Anda..." class="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl focus:outline-none focus:border-blue-400 text-white placeholder-blue-300/50 resize-none"></textarea>
+       </div><button type="submit" class="w-full py-3 bg-blue-500 hover:bg-blue-600 rounded-xl text-white font-medium transition-all hover:shadow-lg"> Kirim Pesan 🚀 </button>
+      </form>
+      <div id="form-success" class="hidden mt-4 p-4 bg-green-500/20 border border-green-500/50 rounded-xl text-center text-green-200">
+       ✅ Pesan berhasil dikirim! Terima kasih.
+      </div>
+     </div>
+    </div>
+   </section><!-- Footer -->
+   <footer class="py-8 px-6 border-t border-white/10">
+    <div class="max-w-6xl mx-auto text-center">
+     <div class="flex justify-center space-x-6 mb-4"><a href="mailto:nsyifanadhifah@gmail.com" class="text-blue-300 hover:text-white transition-colors">
+       <svg class="w-6 h-6" fill="currentColor" viewbox="0 0 20 20"><path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" /> <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
+       </svg></a> <a href="https://wa.me/6289503026221" target="_blank" rel="noopener noreferrer" class="text-blue-300 hover:text-white transition-colors">
+       <svg class="w-6 h-6" fill="currentColor" viewbox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+       </svg></a> <a href="https://instagram.com/naylandfh_" target="_blank" rel="noopener noreferrer" class="text-blue-300 hover:text-white transition-colors">
+       <svg class="w-6 h-6" fill="currentColor" viewbox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+       </svg></a>
+     </div>
+     <p class="text-blue-200 text-sm">© 2025 Naylah Syifa Nadhifah. All rights reserved. Made with 💙</p>
+    </div>
+   </footer><!-- Add Portfolio Modal -->
+   <div id="add-modal" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4">
+    <div class="modal-overlay absolute inset-0" id="modal-overlay"></div>
+    <div class="glass-card rounded-3xl p-8 max-w-lg w-full relative z-10 max-h-[90%] overflow-y-auto"><button id="close-modal" class="absolute top-4 right-4 text-white/60 hover:text-white text-2xl">×</button>
+     <h3 class="font-display text-2xl font-semibold mb-6">🎨 Tambah Karya Baru</h3>
+     <form id="portfolio-form" class="space-y-4">
+      <div><label for="work-title" class="block text-sm text-blue-200 mb-2">Judul Karya</label> <input type="text" id="work-title" placeholder="Nama karya Anda" required class="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl focus:outline-none focus:border-blue-400 text-white placeholder-blue-300/50">
+      </div>
+      <div><label for="work-category" class="block text-sm text-blue-200 mb-2">Kategori</label> <select id="work-category" class="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl focus:outline-none focus:border-blue-400 text-white"> <option value="Ilustrasi" class="bg-gray-800">Ilustrasi</option> <option value="Desain Grafis" class="bg-gray-800">Desain Grafis</option> <option value="Gambar Manual" class="bg-gray-800">Gambar Manual</option> <option value="Lainnya" class="bg-gray-800">Lainnya</option> </select>
+      </div>
+      <div><label for="work-description" class="block text-sm text-blue-200 mb-2">Deskripsi</label> <textarea id="work-description" rows="3" placeholder="Ceritakan tentang karya ini..." class="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl focus:outline-none focus:border-blue-400 text-white placeholder-blue-300/50 resize-none"></textarea>
+      </div>
+      <div><label class="block text-sm text-blue-200 mb-2">Gambar Karya</label>
+       <div id="work-image-area" class="profile-upload-area rounded-xl p-8 text-center cursor-pointer">
+        <div id="work-image-placeholder">
+         <svg class="w-12 h-12 mx-auto text-blue-300 mb-2" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+         </svg>
+         <p class="text-blue-200 text-sm">Klik untuk upload gambar</p>
+        </div><img id="work-image-preview" class="hidden max-h-48 mx-auto rounded-lg">
+       </div><input type="file" id="work-image-input" accept="image/*" class="hidden">
+      </div>
+      <div class="flex gap-4 pt-4"><button type="button" id="cancel-add" class="flex-1 py-3 glass-card rounded-xl text-white font-medium hover:bg-white/20 transition-all"> Batal </button> <button type="submit" id="submit-work" class="flex-1 py-3 bg-blue-500 hover:bg-blue-600 rounded-xl text-white font-medium transition-all disabled:opacity-50 disabled:cursor-not-allowed"> Simpan </button>
+      </div>
+     </form>
+    </div>
+   </div><!-- View Portfolio Modal -->
+   <div id="view-modal" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4">
+    <div class="modal-overlay absolute inset-0" id="view-modal-overlay"></div>
+    <div class="glass-card rounded-3xl p-8 max-w-2xl w-full relative z-10 max-h-[90%] overflow-y-auto"><button id="close-view-modal" class="absolute top-4 right-4 text-white/60 hover:text-white text-2xl">×</button> <img id="view-image" class="w-full max-h-96 object-contain rounded-xl mb-6" alt="">
+     <h3 id="view-title" class="font-display text-2xl font-semibold mb-2"></h3><span id="view-category" class="inline-block px-3 py-1 bg-blue-500/30 rounded-full text-sm mb-4"></span>
+     <p id="view-description" class="text-blue-100 leading-relaxed"></p>
+     <div class="flex gap-4 mt-6"><button id="delete-work" class="flex-1 py-3 bg-red-500/20 hover:bg-red-500/40 border border-red-500/50 rounded-xl text-red-200 font-medium transition-all"> 🗑️ Hapus Karya </button>
+     </div>
+     <div id="delete-confirm" class="hidden mt-4 p-4 bg-red-500/20 border border-red-500/50 rounded-xl">
+      <p class="text-red-200 mb-4">Yakin ingin menghapus karya ini?</p>
+      <div class="flex gap-4"><button id="cancel-delete" class="flex-1 py-2 glass-card rounded-lg text-white font-medium hover:bg-white/20 transition-all">Batal</button> <button id="confirm-delete" class="flex-1 py-2 bg-red-500 hover:bg-red-600 rounded-lg text-white font-medium transition-all">Hapus</button>
+      </div>
+     </div>
+    </div>
+   </div><!-- Loading Overlay -->
+   <div id="loading-overlay" class="hidden fixed inset-0 z-50 flex items-center justify-center bg-black/50">
+    <div class="glass-card rounded-2xl p-8 text-center">
+     <div class="w-12 h-12 border-4 border-blue-300 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+     <p class="text-blue-200">Menyimpan...</p>
+    </div>
+   </div>
+  </div>
+  <script>
+    // Default configuration
+    const defaultConfig = {
+      hero_title: 'Naylah Syifa Nadhifah',
+      hero_tagline: 'Menggambar Ilustrasi',
+      hero_greeting: 'Hallo nama saya Naylah bisa di panggil Nay, selamat datang di web saya, salam kenal 👋✨',
+      about_text: 'Saya anak pertama dari 2 bersaudara, lahir di GARUT 20 Juli 2008. Memiliki passion yang besar dalam dunia seni dan ilustrasi sejak kecil.',
+      about_goal: 'Tujuan saya ingin hidup lebih baik dan terus berkembang dalam bidang desain dan ilustrasi.',
+      profile_image: '',
+      background_color: '#0c1445',
+      surface_color: 'rgba(255, 255, 255, 0.1)',
+      text_color: '#ffffff',
+      primary_action_color: '#3b82f6',
+      secondary_action_color: '#93c5fd',
+      font_family: 'Poppins',
+      font_size: 16
+    };
+
+    let config = { ...defaultConfig };
+    let portfolioData = [];
+    let currentViewItem = null;
+
+    // Element references
+    const elements = {
+      heroName: document.getElementById('hero-name'),
+      heroRole: document.getElementById('hero-role'),
+      heroGreeting: document.getElementById('hero-greeting'),
+      aboutBackground: document.getElementById('about-background'),
+      aboutGoal: document.getElementById('about-goal'),
+      profileImage: document.getElementById('profile-image'),
+      profilePlaceholder: document.getElementById('profile-placeholder'),
+      profileInput: document.getElementById('profile-input'),
+      profilePhotoArea: document.getElementById('profile-photo-area'),
+      removeProfileBtn: document.getElementById('remove-profile-btn'),
+      portfolioGrid: document.getElementById('portfolio-grid'),
+      emptyPortfolio: document.getElementById('empty-portfolio'),
+      addPortfolioBtn: document.getElementById('add-portfolio-btn'),
+      addModal: document.getElementById('add-modal'),
+      modalOverlay: document.getElementById('modal-overlay'),
+      closeModal: document.getElementById('close-modal'),
+      portfolioForm: document.getElementById('portfolio-form'),
+      workTitle: document.getElementById('work-title'),
+      workCategory: document.getElementById('work-category'),
+      workDescription: document.getElementById('work-description'),
+      workImageArea: document.getElementById('work-image-area'),
+      workImageInput: document.getElementById('work-image-input'),
+      workImagePreview: document.getElementById('work-image-preview'),
+      workImagePlaceholder: document.getElementById('work-image-placeholder'),
+      cancelAdd: document.getElementById('cancel-add'),
+      submitWork: document.getElementById('submit-work'),
+      viewModal: document.getElementById('view-modal'),
+      viewModalOverlay: document.getElementById('view-modal-overlay'),
+      closeViewModal: document.getElementById('close-view-modal'),
+      viewImage: document.getElementById('view-image'),
+      viewTitle: document.getElementById('view-title'),
+      viewCategory: document.getElementById('view-category'),
+      viewDescription: document.getElementById('view-description'),
+      deleteWork: document.getElementById('delete-work'),
+      deleteConfirm: document.getElementById('delete-confirm'),
+      cancelDelete: document.getElementById('cancel-delete'),
+      confirmDelete: document.getElementById('confirm-delete'),
+      loadingOverlay: document.getElementById('loading-overlay'),
+      mobileMenuBtn: document.getElementById('mobile-menu-btn'),
+      mobileMenu: document.getElementById('mobile-menu'),
+      contactForm: document.getElementById('contact-form'),
+      formSuccess: document.getElementById('form-success')
+    };
+
+    let workImageData = '';
+
+    // Initialize Element SDK
+    async function initElementSdk() {
+      if (window.elementSdk) {
+        await window.elementSdk.init({
+          defaultConfig,
+          onConfigChange: async (newConfig) => {
+            config = { ...defaultConfig, ...newConfig };
+            updateUI();
+          },
+          mapToCapabilities: (cfg) => ({
+            recolorables: [
+              {
+                get: () => cfg.background_color || defaultConfig.background_color,
+                set: (value) => window.elementSdk.setConfig({ background_color: value })
+              },
+              {
+                get: () => cfg.surface_color || defaultConfig.surface_color,
+                set: (value) => window.elementSdk.setConfig({ surface_color: value })
+              },
+              {
+                get: () => cfg.text_color || defaultConfig.text_color,
+                set: (value) => window.elementSdk.setConfig({ text_color: value })
+              },
+              {
+                get: () => cfg.primary_action_color || defaultConfig.primary_action_color,
+                set: (value) => window.elementSdk.setConfig({ primary_action_color: value })
+              },
+              {
+                get: () => cfg.secondary_action_color || defaultConfig.secondary_action_color,
+                set: (value) => window.elementSdk.setConfig({ secondary_action_color: value })
+              }
+            ],
+            borderables: [],
+            fontEditable: {
+              get: () => cfg.font_family || defaultConfig.font_family,
+              set: (value) => window.elementSdk.setConfig({ font_family: value })
+            },
+            fontSizeable: {
+              get: () => cfg.font_size || defaultConfig.font_size,
+              set: (value) => window.elementSdk.setConfig({ font_size: value })
+            }
+          }),
+          mapToEditPanelValues: (cfg) => new Map([
+            ['hero_title', cfg.hero_title || defaultConfig.hero_title],
+            ['hero_tagline', cfg.hero_tagline || defaultConfig.hero_tagline],
+            ['hero_greeting', cfg.hero_greeting || defaultConfig.hero_greeting],
+            ['about_text', cfg.about_text || defaultConfig.about_text],
+            ['about_goal', cfg.about_goal || defaultConfig.about_goal]
+          ])
+        });
+        config = { ...defaultConfig, ...window.elementSdk.config };
+      }
+      updateUI();
+    }
+
+    // Initialize Data SDK
+    async function initDataSdk() {
+      if (window.dataSdk) {
+        const result = await window.dataSdk.init({
+          onDataChanged: (data) => {
+            portfolioData = data;
+            renderPortfolio();
+          }
+        });
+        if (!result.isOk) {
+          console.error('Failed to initialize Data SDK');
+        }
+      }
+    }
+
+    // Update UI based on config
+    function updateUI() {
+      const fontFamily = config.font_family || defaultConfig.font_family;
+      const fontSize = config.font_size || defaultConfig.font_size;
+      
+      document.body.style.fontFamily = `${fontFamily}, Poppins, sans-serif`;
+      
+      elements.heroName.textContent = config.hero_title || defaultConfig.hero_title;
+      elements.heroRole.textContent = '✏️ ' + (config.hero_tagline || defaultConfig.hero_tagline);
+      elements.heroGreeting.textContent = config.hero_greeting || defaultConfig.hero_greeting;
+      elements.aboutBackground.textContent = config.about_text || defaultConfig.about_text;
+      elements.aboutGoal.textContent = config.about_goal || defaultConfig.about_goal;
+      
+      elements.heroName.style.fontSize = `${fontSize * 2.5}px`;
+      elements.heroRole.style.fontSize = `${fontSize * 1.25}px`;
+      elements.heroGreeting.style.fontSize = `${fontSize}px`;
+      
+      if (config.profile_image) {
+        elements.profileImage.src = config.profile_image;
+        elements.profileImage.classList.remove('hidden');
+        elements.profilePlaceholder.classList.add('hidden');
+        elements.removeProfileBtn.classList.remove('hidden');
+      } else {
+        elements.profileImage.classList.add('hidden');
+        elements.profilePlaceholder.classList.remove('hidden');
+        elements.removeProfileBtn.classList.add('hidden');
+      }
+    }
+
+    // Render portfolio items
+    function renderPortfolio() {
+      if (portfolioData.length === 0) {
+        elements.portfolioGrid.innerHTML = '';
+        elements.emptyPortfolio.classList.remove('hidden');
+        return;
+      }
+      
+      elements.emptyPortfolio.classList.add('hidden');
+      
+      const existingItems = new Map(
+        [...elements.portfolioGrid.children].map(el => [el.dataset.id, el])
+      );
+      
+      portfolioData.forEach(item => {
+        const existingEl = existingItems.get(item.__backendId);
+        if (existingEl) {
+          updatePortfolioCard(existingEl, item);
+          existingItems.delete(item.__backendId);
+        } else {
+          elements.portfolioGrid.appendChild(createPortfolioCard(item));
+        }
+      });
+      
+      existingItems.forEach(el => el.remove());
+    }
+
+    function createPortfolioCard(item) {
+      const card = document.createElement('div');
+      card.dataset.id = item.__backendId;
+      card.className = 'glass-card rounded-2xl overflow-hidden hover-lift cursor-pointer';
+      card.innerHTML = `
+        <div class="aspect-video bg-blue-900/30 flex items-center justify-center overflow-hidden">
+          ${item.image ? `<img src="${item.image}" alt="${item.title}" class="w-full h-full object-cover" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">` : ''}
+          <div class="text-6xl ${item.image ? 'hidden' : 'flex'}">🎨</div>
+        </div>
+        <div class="p-4">
+          <span class="inline-block px-2 py-1 bg-blue-500/30 rounded-full text-xs mb-2">${item.category || 'Lainnya'}</span>
+          <h4 class="font-semibold text-lg mb-1">${item.title}</h4>
+          <p class="text-blue-200 text-sm line-clamp-2">${item.description || ''}</p>
+        </div>
+      `;
+      card.addEventListener('click', () => openViewModal(item));
+      return card;
+    }
+
+    function updatePortfolioCard(card, item) {
+      const img = card.querySelector('img');
+      const placeholder = card.querySelector('.text-6xl');
+      const category = card.querySelector('.bg-blue-500\\/30');
+      const title = card.querySelector('h4');
+      const desc = card.querySelector('.text-blue-200');
+      
+      if (item.image) {
+        if (img) {
+          img.src = item.image;
+          img.alt = item.title;
+          img.style.display = '';
+        }
+        if (placeholder) placeholder.style.display = 'none';
+      } else {
+        if (img) img.style.display = 'none';
+        if (placeholder) placeholder.style.display = 'flex';
+      }
+      
+      if (category) category.textContent = item.category || 'Lainnya';
+      if (title) title.textContent = item.title;
+      if (desc) desc.textContent = item.description || '';
+    }
+
+    // Profile photo handling
+    elements.profilePhotoArea.addEventListener('click', () => {
+      elements.profileInput.click();
+    });
+
+    elements.profileInput.addEventListener('change', (e) => {
+      const file = e.target.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = (event) => {
+          const imageData = event.target.result;
+          config.profile_image = imageData;
+          if (window.elementSdk) {
+            window.elementSdk.setConfig({ profile_image: imageData });
+          }
+          updateUI();
+        };
+        reader.readAsDataURL(file);
+      }
+    });
+
+    elements.removeProfileBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      config.profile_image = '';
+      if (window.elementSdk) {
+        window.elementSdk.setConfig({ profile_image: '' });
+      }
+      updateUI();
+    });
+
+    // Work image handling
+    elements.workImageArea.addEventListener('click', () => {
+      elements.workImageInput.click();
+    });
+
+    elements.workImageInput.addEventListener('change', (e) => {
+      const file = e.target.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = (event) => {
+          workImageData = event.target.result;
+          elements.workImagePreview.src = workImageData;
+          elements.workImagePreview.classList.remove('hidden');
+          elements.workImagePlaceholder.classList.add('hidden');
+        };
+        reader.readAsDataURL(file);
+      }
+    });
+
+    // Modal handling
+    elements.addPortfolioBtn.addEventListener('click', () => {
+      elements.addModal.classList.remove('hidden');
+      resetPortfolioForm();
+    });
+
+    elements.closeModal.addEventListener('click', closeAddModal);
+    elements.modalOverlay.addEventListener('click', closeAddModal);
+    elements.cancelAdd.addEventListener('click', closeAddModal);
+
+    function closeAddModal() {
+      elements.addModal.classList.add('hidden');
+      resetPortfolioForm();
+    }
+
+    function resetPortfolioForm() {
+      elements.portfolioForm.reset();
+      workImageData = '';
+      elements.workImagePreview.classList.add('hidden');
+      elements.workImagePreview.src = '';
+      elements.workImagePlaceholder.classList.remove('hidden');
+    }
+
+    // Portfolio form submission
+    elements.portfolioForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      
+      if (portfolioData.length >= 999) {
+        showToast('Batas maksimum 999 karya tercapai!', 'error');
+        return;
+      }
+      
+      const title = elements.workTitle.value.trim();
+      if (!title) return;
+      
+      elements.submitWork.disabled = true;
+      elements.loadingOverlay.classList.remove('hidden');
+      
+      const newWork = {
+        id: Date.now().toString(),
+        title: title,
+        category: elements.workCategory.value,
+        description: elements.workDescription.value.trim(),
+        image: workImageData,
+        createdAt: new Date().toISOString()
+      };
+      
+      if (window.dataSdk) {
+        const result = await window.dataSdk.create(newWork);
+        if (!result.isOk) {
+          showToast('Gagal menyimpan karya', 'error');
+        } else {
+          showToast('Karya berhasil ditambahkan!', 'success');
+          closeAddModal();
+        }
+      }
+      
+      elements.submitWork.disabled = false;
+      elements.loadingOverlay.classList.add('hidden');
+    });
+
+    // View modal handling
+    function openViewModal(item) {
+      currentViewItem = item;
+      elements.viewImage.src = item.image || '';
+      elements.viewImage.alt = item.title;
+      elements.viewImage.style.display = item.image ? '' : 'none';
+      elements.viewTitle.textContent = item.title;
+      elements.viewCategory.textContent = item.category || 'Lainnya';
+      elements.viewDescription.textContent = item.description || 'Tidak ada deskripsi';
+      elements.deleteConfirm.classList.add('hidden');
+      elements.viewModal.classList.remove('hidden');
+    }
+
+    elements.closeViewModal.addEventListener('click', closeViewModal);
+    elements.viewModalOverlay.addEventListener('click', closeViewModal);
+
+    function closeViewModal() {
+      elements.viewModal.classList.add('hidden');
+      currentViewItem = null;
+    }
+
+    elements.deleteWork.addEventListener('click', () => {
+      elements.deleteConfirm.classList.remove('hidden');
+    });
+
+    elements.cancelDelete.addEventListener('click', () => {
+      elements.deleteConfirm.classList.add('hidden');
+    });
+
+    elements.confirmDelete.addEventListener('click', async () => {
+      if (!currentViewItem || !window.dataSdk) return;
+      
+      elements.loadingOverlay.classList.remove('hidden');
+      
+      const result = await window.dataSdk.delete(currentViewItem);
+      if (result.isOk) {
+        showToast('Karya berhasil dihapus', 'success');
+        closeViewModal();
+      } else {
+        showToast('Gagal menghapus karya', 'error');
+      }
+      
+      elements.loadingOverlay.classList.add('hidden');
+    });
+
+    // Mobile menu
+    elements.mobileMenuBtn.addEventListener('click', () => {
+      elements.mobileMenu.classList.toggle('hidden');
+    });
+
+    // Close mobile menu when clicking a link
+    elements.mobileMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        elements.mobileMenu.classList.add('hidden');
+      });
+    });
+
+    // Contact form
+    elements.contactForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      elements.formSuccess.classList.remove('hidden');
+      elements.contactForm.reset();
+      setTimeout(() => {
+        elements.formSuccess.classList.add('hidden');
+      }, 3000);
+    });
+
+    // Toast notification
+    function showToast(message, type = 'success') {
+      const toast = document.createElement('div');
+      toast.className = `fixed bottom-4 right-4 px-6 py-3 rounded-xl text-white font-medium z-50 fade-in ${type === 'success' ? 'bg-green-500' : 'bg-red-500'}`;
+      toast.textContent = message;
+      document.body.appendChild(toast);
+      setTimeout(() => {
+        toast.remove();
+      }, 3000);
+    }
+
+    // Initialize
+    (async function init() {
+      await initElementSdk();
+      await initDataSdk();
+    })();
+  </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9c554d0d74bfc579',t:'MTc2OTY1Mzc1Ny4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
