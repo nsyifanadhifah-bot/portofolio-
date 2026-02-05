@@ -1,0 +1,622 @@
+<!doctype html>
+<html lang="id" class="h-full">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Naylah Syifa Nadhifah - Portfolio</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="/_sdk/element_sdk.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&amp;family=Poppins:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+  <style>
+    body {
+      box-sizing: border-box;
+    }
+    
+    * {
+      scroll-behavior: smooth;
+    }
+    
+    .font-heading {
+      font-family: 'Playfair Display', serif;
+    }
+    
+    .font-body {
+      font-family: 'Poppins', sans-serif;
+    }
+    
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(0px);
+      }
+      50% {
+        transform: translateY(-10px);
+      }
+    }
+    
+    @keyframes shimmer {
+      0% {
+        background-position: -200% 0;
+      }
+      100% {
+        background-position: 200% 0;
+      }
+    }
+    
+    .animate-fade-in {
+      animation: fadeInUp 0.8s ease-out forwards;
+    }
+    
+    .animate-float {
+      animation: float 3s ease-in-out infinite;
+    }
+    
+    .delay-100 { animation-delay: 0.1s; }
+    .delay-200 { animation-delay: 0.2s; }
+    .delay-300 { animation-delay: 0.3s; }
+    .delay-400 { animation-delay: 0.4s; }
+    .delay-500 { animation-delay: 0.5s; }
+    
+    .gradient-text {
+      background: linear-gradient(135deg, #60a5fa 0%, #a78bfa 50%, #f472b6 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    .shimmer-border {
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+      background-size: 200% 100%;
+      animation: shimmer 2s infinite;
+    }
+    
+    .card-hover {
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    
+    .card-hover:hover {
+      transform: translateY(-8px) scale(1.02);
+    }
+    
+    .skill-bar {
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .skill-bar::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+      animation: shimmer 2s infinite;
+    }
+    
+    .nav-link {
+      position: relative;
+    }
+    
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(90deg, #60a5fa, #a78bfa);
+      transition: width 0.3s ease;
+    }
+    
+    .nav-link:hover::after {
+      width: 100%;
+    }
+    
+    .blob {
+      border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+      animation: blob 8s ease-in-out infinite;
+    }
+    
+    @keyframes blob {
+      0%, 100% {
+        border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+      }
+      50% {
+        border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%;
+      }
+    }
+  </style>
+  <style>@view-transition { navigation: auto; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+ </head>
+ <body class="h-full font-body">
+  <div id="app-wrapper" class="w-full h-full overflow-auto" style="background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);"><!-- Decorative Elements -->
+   <div class="fixed top-20 left-10 w-64 h-64 bg-blue-500/10 rounded-full blur-3xl pointer-events-none"></div>
+   <div class="fixed bottom-20 right-10 w-80 h-80 bg-purple-500/10 rounded-full blur-3xl pointer-events-none"></div><!-- Header / Navigation -->
+   <header class="fixed top-0 left-0 right-0 z-50 backdrop-blur-md bg-slate-900/80 border-b border-slate-700/50">
+    <nav class="max-w-6xl mx-auto px-6 py-4">
+     <div class="flex items-center justify-between"><a href="#home" class="flex items-center gap-2">
+       <div class="w-10 h-10 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center"><span class="text-white font-bold text-lg">N</span>
+       </div><span id="nav-logo" class="text-xl font-heading font-bold text-white">Naylah</span> </a>
+      <div class="hidden md:flex items-center gap-8"><a href="#home" class="nav-link text-slate-300 hover:text-white transition-colors">Home</a> <a href="#about" class="nav-link text-slate-300 hover:text-white transition-colors">About</a> <a href="#skills" class="nav-link text-slate-300 hover:text-white transition-colors">Skills</a> <a href="#portfolio" class="nav-link text-slate-300 hover:text-white transition-colors">Portfolio</a> <a href="#contact" class="nav-link text-slate-300 hover:text-white transition-colors">Contact</a>
+      </div><button id="mobile-menu-btn" class="md:hidden text-white p-2">
+       <svg class="w-6 h-6" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+       </svg></button>
+     </div><!-- Mobile Menu -->
+     <div id="mobile-menu" class="hidden md:hidden mt-4 pb-4 border-t border-slate-700/50 pt-4">
+      <div class="flex flex-col gap-4"><a href="#home" class="text-slate-300 hover:text-white transition-colors">Home</a> <a href="#about" class="text-slate-300 hover:text-white transition-colors">About</a> <a href="#skills" class="text-slate-300 hover:text-white transition-colors">Skills</a> <a href="#portfolio" class="text-slate-300 hover:text-white transition-colors">Portfolio</a> <a href="#contact" class="text-slate-300 hover:text-white transition-colors">Contact</a>
+      </div>
+     </div>
+    </nav>
+   </header><!-- Hero Section -->
+   <section id="home" class="min-h-screen flex items-center justify-center px-6 pt-20">
+    <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center">
+     <div class="text-center md:text-left">
+      <p class="text-blue-400 font-medium mb-4 animate-fade-in opacity-0">👋 Selamat Datang</p>
+      <h1 id="hero-name" class="text-4xl md:text-6xl font-heading font-bold text-white mb-4 animate-fade-in opacity-0 delay-100">Naylah Syifa Nadhifah</h1>
+      <p id="hero-role" class="text-xl md:text-2xl gradient-text font-semibold mb-6 animate-fade-in opacity-0 delay-200">✨ Ilustrator &amp; Desainer Grafis</p>
+      <p id="hero-greeting" class="text-slate-400 text-lg mb-8 leading-relaxed animate-fade-in opacity-0 delay-300">Hallo! Nama saya Naylah, bisa dipanggil Nay. Selamat datang di website saya. Salam kenal! 💫</p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start animate-fade-in opacity-0 delay-400"><a href="#portfolio" class="px-8 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-full font-medium hover:shadow-lg hover:shadow-blue-500/30 transition-all duration-300 text-center"> 🎨 Lihat Portfolio </a> <a href="#contact" class="px-8 py-3 border-2 border-slate-600 text-white rounded-full font-medium hover:bg-slate-800 hover:border-slate-500 transition-all duration-300 text-center"> 📬 Hubungi Saya </a>
+      </div>
+     </div>
+     <div class="relative flex justify-center animate-fade-in opacity-0 delay-500">
+      <div class="relative">
+       <div class="absolute inset-0 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full blur-2xl opacity-30 animate-float"></div>
+       <div class="w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-slate-700 relative z-10 blob"><img src=https://github.com/nsyifanadhifah-bot/portofolio-/blob/main/9be0b047-dd63-46fe-802e-9ad6bbb2b497.jpg alt="Foto Naylah Syifa Nadhifah" loading="lazy" class="w-full h-full object-cover" onerror="this.style.background='linear-gradient(135deg, #3b82f6, #8b5cf6)'; this.alt='Naylah Syifa'; this.innerHTML=''; this.parentElement.innerHTML='<div class=\'w-full h-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center\'><span class=\'text-6xl md:text-8xl\'>👩‍🎨</span></div>';">
+       </div>
+       <div class="absolute -bottom-4 -right-4 bg-slate-800 border border-slate-700 rounded-2xl px-4 py-2 shadow-xl z-20"><span class="text-2xl">🎨</span> <span class="text-white font-medium ml-2">Ilustrator</span>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section><!-- About Section -->
+   <section id="about" class="py-20 px-6">
+    <div class="max-w-6xl mx-auto">
+     <div class="text-center mb-16"><span class="text-blue-400 font-medium">Tentang Saya</span>
+      <h2 class="text-3xl md:text-4xl font-heading font-bold text-white mt-2">Kenalan Lebih Dekat 🌟</h2>
+     </div>
+     <div class="grid md:grid-cols-2 gap-12 items-center">
+      <div class="space-y-6">
+       <div class="bg-slate-800/50 backdrop-blur-sm border border-slate-700/50 rounded-2xl p-6 card-hover">
+        <div class="flex items-start gap-4">
+         <div class="w-12 h-12 rounded-xl bg-blue-500/20 flex items-center justify-center flex-shrink-0"><span class="text-2xl">👤</span>
+         </div>
+         <div>
+          <h3 class="text-white font-semibold text-lg mb-2">Latar Belakang</h3>
+          <p id="about-background" class="text-slate-400 leading-relaxed">Saya anak pertama dari 2 bersaudara, lahir di Garut pada tanggal 20 Juli 2008.</p>
+         </div>
+        </div>
+       </div>
+       <div class="bg-slate-800/50 backdrop-blur-sm border border-slate-700/50 rounded-2xl p-6 card-hover">
+        <div class="flex items-start gap-4">
+         <div class="w-12 h-12 rounded-xl bg-purple-500/20 flex items-center justify-center flex-shrink-0"><span class="text-2xl">🎯</span>
+         </div>
+         <div>
+          <h3 class="text-white font-semibold text-lg mb-2">Tujuan Hidup</h3>
+          <p id="about-goal" class="text-slate-400 leading-relaxed">Tujuan saya adalah untuk hidup lebih baik dan terus berkembang dalam bidang seni dan desain.</p>
+         </div>
+        </div>
+       </div>
+       <div class="bg-slate-800/50 backdrop-blur-sm border border-slate-700/50 rounded-2xl p-6 card-hover">
+        <div class="flex items-start gap-4">
+         <div class="w-12 h-12 rounded-xl bg-pink-500/20 flex items-center justify-center flex-shrink-0"><span class="text-2xl">💎</span>
+         </div>
+         <div>
+          <h3 class="text-white font-semibold text-lg mb-2">Keunggulan</h3>
+          <p class="text-slate-400 leading-relaxed">Menggambar ilustrasi dan membuat desain yang menarik adalah passion utama saya.</p>
+         </div>
+        </div>
+       </div>
+      </div>
+      <div class="bg-gradient-to-br from-slate-800/80 to-slate-900/80 backdrop-blur-sm border border-slate-700/50 rounded-3xl p-8">
+       <h3 class="text-white font-heading font-bold text-2xl mb-6">Quick Facts ✨</h3>
+       <div class="space-y-4">
+        <div class="flex items-center gap-4 p-3 bg-slate-700/30 rounded-xl"><span class="text-2xl">📍</span>
+         <div>
+          <p class="text-slate-500 text-sm">Tempat Lahir</p>
+          <p class="text-white font-medium">Garut, Jawa Barat</p>
+         </div>
+        </div>
+        <div class="flex items-center gap-4 p-3 bg-slate-700/30 rounded-xl"><span class="text-2xl">🎂</span>
+         <div>
+          <p class="text-slate-500 text-sm">Tanggal Lahir</p>
+          <p class="text-white font-medium">20 Juli 2008</p>
+         </div>
+        </div>
+        <div class="flex items-center gap-4 p-3 bg-slate-700/30 rounded-xl"><span class="text-2xl">🎨</span>
+         <div>
+          <p class="text-slate-500 text-sm">Spesialisasi</p>
+          <p class="text-white font-medium">Ilustrasi &amp; Desain Grafis</p>
+         </div>
+        </div>
+        <div class="flex items-center gap-4 p-3 bg-slate-700/30 rounded-xl"><span class="text-2xl">💫</span>
+         <div>
+          <p class="text-slate-500 text-sm">Panggilan</p>
+          <p class="text-white font-medium">Nay</p>
+         </div>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section><!-- Skills Section -->
+   <section id="skills" class="py-20 px-6 bg-slate-900/50">
+    <div class="max-w-6xl mx-auto">
+     <div class="text-center mb-16"><span class="text-blue-400 font-medium">Keahlian</span>
+      <h2 class="text-3xl md:text-4xl font-heading font-bold text-white mt-2">Skill &amp; Kemampuan 💪</h2>
+     </div>
+     <div class="grid md:grid-cols-2 gap-12"><!-- Hard Skills -->
+      <div class="bg-slate-800/50 backdrop-blur-sm border border-slate-700/50 rounded-3xl p-8">
+       <div class="flex items-center gap-3 mb-8">
+        <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center"><span class="text-2xl">🛠️</span>
+        </div>
+        <h3 class="text-white font-heading font-bold text-2xl">Hard Skills</h3>
+       </div>
+       <div class="space-y-6">
+        <div>
+         <div class="flex justify-between mb-2"><span class="text-white font-medium">Desain Grafis</span> <span class="text-blue-400">90%</span>
+         </div>
+         <div class="h-3 bg-slate-700 rounded-full overflow-hidden">
+          <div class="skill-bar h-full bg-gradient-to-r from-blue-500 to-purple-600 rounded-full" style="width: 90%"></div>
+         </div>
+        </div>
+        <div>
+         <div class="flex justify-between mb-2"><span class="text-white font-medium">Ilustrasi Digital</span> <span class="text-blue-400">95%</span>
+         </div>
+         <div class="h-3 bg-slate-700 rounded-full overflow-hidden">
+          <div class="skill-bar h-full bg-gradient-to-r from-blue-500 to-purple-600 rounded-full" style="width: 95%"></div>
+         </div>
+        </div>
+        <div>
+         <div class="flex justify-between mb-2"><span class="text-white font-medium">Menggambar Manual</span> <span class="text-blue-400">85%</span>
+         </div>
+         <div class="h-3 bg-slate-700 rounded-full overflow-hidden">
+          <div class="skill-bar h-full bg-gradient-to-r from-blue-500 to-purple-600 rounded-full" style="width: 85%"></div>
+         </div>
+        </div>
+        <div>
+         <div class="flex justify-between mb-2"><span class="text-white font-medium">Character Design</span> <span class="text-blue-400">88%</span>
+         </div>
+         <div class="h-3 bg-slate-700 rounded-full overflow-hidden">
+          <div class="skill-bar h-full bg-gradient-to-r from-blue-500 to-purple-600 rounded-full" style="width: 88%"></div>
+         </div>
+        </div>
+       </div>
+      </div><!-- Soft Skills -->
+      <div class="bg-slate-800/50 backdrop-blur-sm border border-slate-700/50 rounded-3xl p-8">
+       <div class="flex items-center gap-3 mb-8">
+        <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-pink-500 to-orange-500 flex items-center justify-center"><span class="text-2xl">🌟</span>
+        </div>
+        <h3 class="text-white font-heading font-bold text-2xl">Soft Skills</h3>
+       </div>
+       <div class="grid grid-cols-2 gap-4">
+        <div class="bg-slate-700/30 rounded-2xl p-4 text-center card-hover"><span class="text-4xl block mb-3">💬</span>
+         <p class="text-white font-medium">Komunikasi</p>
+        </div>
+        <div class="bg-slate-700/30 rounded-2xl p-4 text-center card-hover"><span class="text-4xl block mb-3">🤝</span>
+         <p class="text-white font-medium">Kerja Tim</p>
+        </div>
+        <div class="bg-slate-700/30 rounded-2xl p-4 text-center card-hover"><span class="text-4xl block mb-3">💡</span>
+         <p class="text-white font-medium">Kreativitas</p>
+        </div>
+        <div class="bg-slate-700/30 rounded-2xl p-4 text-center card-hover"><span class="text-4xl block mb-3">⏰</span>
+         <p class="text-white font-medium">Manajemen Waktu</p>
+        </div>
+        <div class="bg-slate-700/30 rounded-2xl p-4 text-center card-hover"><span class="text-4xl block mb-3">🎯</span>
+         <p class="text-white font-medium">Detail Oriented</p>
+        </div>
+        <div class="bg-slate-700/30 rounded-2xl p-4 text-center card-hover"><span class="text-4xl block mb-3">🔄</span>
+         <p class="text-white font-medium">Adaptasi</p>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section><!-- Portfolio Section -->
+   <section id="portfolio" class="py-20 px-6">
+    <div class="max-w-6xl mx-auto">
+     <div class="text-center mb-16"><span class="text-blue-400 font-medium">Portfolio</span>
+      <h2 class="text-3xl md:text-4xl font-heading font-bold text-white mt-2">Karya &amp; Proyek 🎨</h2>
+     </div>
+     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6"><!-- Portfolio Item 1 -->
+      <div class="group bg-slate-800/50 backdrop-blur-sm border border-slate-700/50 rounded-2xl overflow-hidden card-hover">
+       <div class="aspect-video bg-gradient-to-br from-blue-500/20 to-purple-600/20 flex items-center justify-center relative overflow-hidden"><span class="text-6xl group-hover:scale-110 transition-transform duration-300">🖼️</span>
+        <div class="absolute inset-0 bg-gradient-to-t from-slate-900 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+       </div>
+       <div class="p-6">
+        <h3 class="text-white font-semibold text-lg mb-2">Ilustrasi Karakter</h3>
+        <p class="text-slate-400 text-sm mb-4">Desain karakter original dengan gaya anime modern</p>
+        <div class="flex gap-2"><span class="px-3 py-1 bg-blue-500/20 text-blue-400 text-xs rounded-full">Ilustrasi</span> <span class="px-3 py-1 bg-purple-500/20 text-purple-400 text-xs rounded-full">Digital Art</span>
+        </div>
+       </div>
+      </div><!-- Portfolio Item 2 -->
+      <div class="group bg-slate-800/50 backdrop-blur-sm border border-slate-700/50 rounded-2xl overflow-hidden card-hover">
+       <div class="aspect-video bg-gradient-to-br from-pink-500/20 to-orange-500/20 flex items-center justify-center relative overflow-hidden"><span class="text-6xl group-hover:scale-110 transition-transform duration-300">🎭</span>
+        <div class="absolute inset-0 bg-gradient-to-t from-slate-900 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+       </div>
+       <div class="p-6">
+        <h3 class="text-white font-semibold text-lg mb-2">Poster Event</h3>
+        <p class="text-slate-400 text-sm mb-4">Desain poster untuk berbagai acara sekolah</p>
+        <div class="flex gap-2"><span class="px-3 py-1 bg-pink-500/20 text-pink-400 text-xs rounded-full">Poster</span> <span class="px-3 py-1 bg-orange-500/20 text-orange-400 text-xs rounded-full">Desain</span>
+        </div>
+       </div>
+      </div><!-- Portfolio Item 3 -->
+      <div class="group bg-slate-800/50 backdrop-blur-sm border border-slate-700/50 rounded-2xl overflow-hidden card-hover">
+       <div class="aspect-video bg-gradient-to-br from-green-500/20 to-teal-500/20 flex items-center justify-center relative overflow-hidden"><span class="text-6xl group-hover:scale-110 transition-transform duration-300">📚</span>
+        <div class="absolute inset-0 bg-gradient-to-t from-slate-900 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+       </div>
+       <div class="p-6">
+        <h3 class="text-white font-semibold text-lg mb-2">Book Cover Design</h3>
+        <p class="text-slate-400 text-sm mb-4">Ilustrasi sampul buku dengan tema fantasi</p>
+        <div class="flex gap-2"><span class="px-3 py-1 bg-green-500/20 text-green-400 text-xs rounded-full">Cover</span> <span class="px-3 py-1 bg-teal-500/20 text-teal-400 text-xs rounded-full">Ilustrasi</span>
+        </div>
+       </div>
+      </div><!-- Portfolio Item 4 -->
+      <div class="group bg-slate-800/50 backdrop-blur-sm border border-slate-700/50 rounded-2xl overflow-hidden card-hover">
+       <div class="aspect-video bg-gradient-to-br from-yellow-500/20 to-red-500/20 flex items-center justify-center relative overflow-hidden"><span class="text-6xl group-hover:scale-110 transition-transform duration-300">🌸</span>
+        <div class="absolute inset-0 bg-gradient-to-t from-slate-900 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+       </div>
+       <div class="p-6">
+        <h3 class="text-white font-semibold text-lg mb-2">Chibi Art Collection</h3>
+        <p class="text-slate-400 text-sm mb-4">Koleksi ilustrasi chibi karakter lucu</p>
+        <div class="flex gap-2"><span class="px-3 py-1 bg-yellow-500/20 text-yellow-400 text-xs rounded-full">Chibi</span> <span class="px-3 py-1 bg-red-500/20 text-red-400 text-xs rounded-full">Cute</span>
+        </div>
+       </div>
+      </div><!-- Portfolio Item 5 -->
+      <div class="group bg-slate-800/50 backdrop-blur-sm border border-slate-700/50 rounded-2xl overflow-hidden card-hover">
+       <div class="aspect-video bg-gradient-to-br from-indigo-500/20 to-violet-500/20 flex items-center justify-center relative overflow-hidden"><span class="text-6xl group-hover:scale-110 transition-transform duration-300">✨</span>
+        <div class="absolute inset-0 bg-gradient-to-t from-slate-900 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+       </div>
+       <div class="p-6">
+        <h3 class="text-white font-semibold text-lg mb-2">Logo Design</h3>
+        <p class="text-slate-400 text-sm mb-4">Desain logo untuk brand dan komunitas</p>
+        <div class="flex gap-2"><span class="px-3 py-1 bg-indigo-500/20 text-indigo-400 text-xs rounded-full">Logo</span> <span class="px-3 py-1 bg-violet-500/20 text-violet-400 text-xs rounded-full">Branding</span>
+        </div>
+       </div>
+      </div><!-- Portfolio Item 6 -->
+      <div class="group bg-slate-800/50 backdrop-blur-sm border border-slate-700/50 rounded-2xl overflow-hidden card-hover">
+       <div class="aspect-video bg-gradient-to-br from-cyan-500/20 to-blue-500/20 flex items-center justify-center relative overflow-hidden"><span class="text-6xl group-hover:scale-110 transition-transform duration-300">🎪</span>
+        <div class="absolute inset-0 bg-gradient-to-t from-slate-900 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+       </div>
+       <div class="p-6">
+        <h3 class="text-white font-semibold text-lg mb-2">Social Media Design</h3>
+        <p class="text-slate-400 text-sm mb-4">Konten visual untuk media sosial</p>
+        <div class="flex gap-2"><span class="px-3 py-1 bg-cyan-500/20 text-cyan-400 text-xs rounded-full">Social</span> <span class="px-3 py-1 bg-blue-500/20 text-blue-400 text-xs rounded-full">Content</span>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section><!-- Contact Section -->
+   <section id="contact" class="py-20 px-6 bg-slate-900/50">
+    <div class="max-w-6xl mx-auto">
+     <div class="text-center mb-16"><span class="text-blue-400 font-medium">Kontak</span>
+      <h2 class="text-3xl md:text-4xl font-heading font-bold text-white mt-2">Hubungi Saya 📬</h2>
+     </div>
+     <div class="grid md:grid-cols-2 gap-12"><!-- Contact Info -->
+      <div class="space-y-6">
+       <p class="text-slate-400 text-lg leading-relaxed">Tertarik untuk berkolaborasi atau ingin bertanya sesuatu? Jangan ragu untuk menghubungi saya melalui kontak di bawah ini! 💌</p>
+       <div class="space-y-4"><a href="mailto:nsyifanadhifah@gmail.com" class="flex items-center gap-4 p-4 bg-slate-800/50 border border-slate-700/50 rounded-xl hover:bg-slate-800 transition-colors group">
+         <div class="w-12 h-12 rounded-xl bg-red-500/20 flex items-center justify-center group-hover:scale-110 transition-transform"><span class="text-2xl">📧</span>
+         </div>
+         <div>
+          <p class="text-slate-500 text-sm">Email</p>
+          <p id="contact-email" class="text-white font-medium">nsyifanadhifah@gmail.com</p>
+         </div></a> <a href="https://wa.me/6289503026221" target="_blank" rel="noopener noreferrer" class="flex items-center gap-4 p-4 bg-slate-800/50 border border-slate-700/50 rounded-xl hover:bg-slate-800 transition-colors group">
+         <div class="w-12 h-12 rounded-xl bg-green-500/20 flex items-center justify-center group-hover:scale-110 transition-transform"><span class="text-2xl">📱</span>
+         </div>
+         <div>
+          <p class="text-slate-500 text-sm">WhatsApp</p>
+          <p id="contact-whatsapp" class="text-white font-medium">0895-0302-6221</p>
+         </div></a> <a href="https://instagram.com/naylandfh_" target="_blank" rel="noopener noreferrer" class="flex items-center gap-4 p-4 bg-slate-800/50 border border-slate-700/50 rounded-xl hover:bg-slate-800 transition-colors group">
+         <div class="w-12 h-12 rounded-xl bg-pink-500/20 flex items-center justify-center group-hover:scale-110 transition-transform"><span class="text-2xl">📸</span>
+         </div>
+         <div>
+          <p class="text-slate-500 text-sm">Instagram</p>
+          <p id="contact-instagram" class="text-white font-medium">@naylandfh_</p>
+         </div></a>
+       </div>
+      </div><!-- Contact Form -->
+      <div class="bg-slate-800/50 backdrop-blur-sm border border-slate-700/50 rounded-3xl p-8">
+       <h3 class="text-white font-heading font-bold text-xl mb-6">Kirim Pesan 💬</h3>
+       <form id="contact-form" class="space-y-4">
+        <div><label for="name" class="text-slate-400 text-sm mb-2 block">Nama</label> <input type="text" id="name" name="name" placeholder="Nama kamu" class="w-full px-4 py-3 bg-slate-700/50 border border-slate-600 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:border-blue-500 transition-colors">
+        </div>
+        <div><label for="email" class="text-slate-400 text-sm mb-2 block">Email</label> <input type="email" id="email" name="email" placeholder="email@example.com" class="w-full px-4 py-3 bg-slate-700/50 border border-slate-600 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:border-blue-500 transition-colors">
+        </div>
+        <div><label for="message" class="text-slate-400 text-sm mb-2 block">Pesan</label> <textarea id="message" name="message" rows="4" placeholder="Tulis pesan kamu..." class="w-full px-4 py-3 bg-slate-700/50 border border-slate-600 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:border-blue-500 transition-colors resize-none"></textarea>
+        </div><button type="submit" class="w-full py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-xl font-medium hover:shadow-lg hover:shadow-blue-500/30 transition-all duration-300"> Kirim Pesan 🚀 </button>
+       </form>
+       <div id="form-success" class="hidden mt-4 p-4 bg-green-500/20 border border-green-500/50 rounded-xl text-green-400 text-center">
+        ✅ Pesan terkirim! Terima kasih sudah menghubungi.
+       </div>
+      </div>
+     </div>
+    </div>
+   </section><!-- Footer -->
+   <footer class="py-8 px-6 border-t border-slate-800">
+    <div class="max-w-6xl mx-auto">
+     <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+      <div class="flex items-center gap-2">
+       <div class="w-8 h-8 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center"><span class="text-white font-bold text-sm">N</span>
+       </div><span class="text-slate-400">© 2024 Naylah Syifa Nadhifah</span>
+      </div>
+      <div class="flex items-center gap-4"><a href="https://instagram.com/naylandfh_" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-slate-400 hover:bg-pink-500/20 hover:text-pink-400 transition-colors"> <span class="text-lg">📸</span> </a> <a href="mailto:nsyifanadhifah@gmail.com" class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-slate-400 hover:bg-red-500/20 hover:text-red-400 transition-colors"> <span class="text-lg">📧</span> </a> <a href="https://wa.me/6289503026221" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-slate-400 hover:bg-green-500/20 hover:text-green-400 transition-colors"> <span class="text-lg">📱</span> </a>
+      </div>
+      <p class="text-slate-500 text-sm">Made with 💙 in Garut</p>
+     </div>
+    </div>
+   </footer>
+  </div>
+  <script>
+    const defaultConfig = {
+      hero_name: 'Naylah Syifa Nadhifah',
+      hero_role: '✨ Ilustrator & Desainer Grafis',
+      hero_greeting: 'Hallo! Nama saya Naylah, bisa dipanggil Nay. Selamat datang di website saya. Salam kenal! 💫',
+      about_background: 'Saya anak pertama dari 2 bersaudara, lahir di Garut pada tanggal 20 Juli 2008.',
+      about_goal: 'Tujuan saya adalah untuk hidup lebih baik dan terus berkembang dalam bidang seni dan desain.',
+      contact_email: 'nsyifanadhifah@gmail.com',
+      contact_whatsapp: '0895-0302-6221',
+      contact_instagram: '@naylandfh_',
+      background_color: '#0f172a',
+      surface_color: '#1e293b',
+      text_color: '#e2e8f0',
+      primary_action_color: '#3b82f6',
+      secondary_action_color: '#8b5cf6'
+    };
+
+    // Mobile menu toggle
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    
+    mobileMenuBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+
+    // Close mobile menu when clicking a link
+    mobileMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+      });
+    });
+
+    // Contact form handling
+    const contactForm = document.getElementById('contact-form');
+    const formSuccess = document.getElementById('form-success');
+    
+    contactForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      formSuccess.classList.remove('hidden');
+      contactForm.reset();
+      setTimeout(() => {
+        formSuccess.classList.add('hidden');
+      }, 5000);
+    });
+
+    // Intersection Observer for animations
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.animate-fade-in').forEach(el => {
+      observer.observe(el);
+    });
+
+    // Element SDK Integration
+    async function onConfigChange(config) {
+      const heroName = document.getElementById('hero-name');
+      const heroRole = document.getElementById('hero-role');
+      const heroGreeting = document.getElementById('hero-greeting');
+      const aboutBackground = document.getElementById('about-background');
+      const aboutGoal = document.getElementById('about-goal');
+      const contactEmail = document.getElementById('contact-email');
+      const contactWhatsapp = document.getElementById('contact-whatsapp');
+      const contactInstagram = document.getElementById('contact-instagram');
+
+      if (heroName) heroName.textContent = config.hero_name || defaultConfig.hero_name;
+      if (heroRole) heroRole.textContent = config.hero_role || defaultConfig.hero_role;
+      if (heroGreeting) heroGreeting.textContent = config.hero_greeting || defaultConfig.hero_greeting;
+      if (aboutBackground) aboutBackground.textContent = config.about_background || defaultConfig.about_background;
+      if (aboutGoal) aboutGoal.textContent = config.about_goal || defaultConfig.about_goal;
+      if (contactEmail) contactEmail.textContent = config.contact_email || defaultConfig.contact_email;
+      if (contactWhatsapp) contactWhatsapp.textContent = config.contact_whatsapp || defaultConfig.contact_whatsapp;
+      if (contactInstagram) contactInstagram.textContent = config.contact_instagram || defaultConfig.contact_instagram;
+
+      // Apply colors
+      const appWrapper = document.getElementById('app-wrapper');
+      if (appWrapper) {
+        appWrapper.style.background = `linear-gradient(135deg, ${config.background_color || defaultConfig.background_color} 0%, ${config.surface_color || defaultConfig.surface_color} 50%, ${config.background_color || defaultConfig.background_color} 100%)`;
+      }
+    }
+
+    function mapToCapabilities(config) {
+      return {
+        recolorables: [
+          {
+            get: () => config.background_color || defaultConfig.background_color,
+            set: (value) => {
+              config.background_color = value;
+              if (window.elementSdk) window.elementSdk.setConfig({ background_color: value });
+            }
+          },
+          {
+            get: () => config.surface_color || defaultConfig.surface_color,
+            set: (value) => {
+              config.surface_color = value;
+              if (window.elementSdk) window.elementSdk.setConfig({ surface_color: value });
+            }
+          },
+          {
+            get: () => config.text_color || defaultConfig.text_color,
+            set: (value) => {
+              config.text_color = value;
+              if (window.elementSdk) window.elementSdk.setConfig({ text_color: value });
+            }
+          },
+          {
+            get: () => config.primary_action_color || defaultConfig.primary_action_color,
+            set: (value) => {
+              config.primary_action_color = value;
+              if (window.elementSdk) window.elementSdk.setConfig({ primary_action_color: value });
+            }
+          },
+          {
+            get: () => config.secondary_action_color || defaultConfig.secondary_action_color,
+            set: (value) => {
+              config.secondary_action_color = value;
+              if (window.elementSdk) window.elementSdk.setConfig({ secondary_action_color: value });
+            }
+          }
+        ],
+        borderables: [],
+        fontEditable: undefined,
+        fontSizeable: undefined
+      };
+    }
+
+    function mapToEditPanelValues(config) {
+      return new Map([
+        ['hero_name', config.hero_name || defaultConfig.hero_name],
+        ['hero_role', config.hero_role || defaultConfig.hero_role],
+        ['hero_greeting', config.hero_greeting || defaultConfig.hero_greeting],
+        ['about_background', config.about_background || defaultConfig.about_background],
+        ['about_goal', config.about_goal || defaultConfig.about_goal],
+        ['contact_email', config.contact_email || defaultConfig.contact_email],
+        ['contact_whatsapp', config.contact_whatsapp || defaultConfig.contact_whatsapp],
+        ['contact_instagram', config.contact_instagram || defaultConfig.contact_instagram]
+      ]);
+    }
+
+    // Initialize SDK
+    if (window.elementSdk) {
+      window.elementSdk.init({
+        defaultConfig,
+        onConfigChange,
+        mapToCapabilities,
+        mapToEditPanelValues
+      });
+    }
+  </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9c8f13f2f486600b',t:'MTc3MDI1OTU5Mi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
